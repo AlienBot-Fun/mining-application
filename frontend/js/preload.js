@@ -223,8 +223,8 @@ $(function(){
                 let list = accounts.filter( acc => acc.bender.status.mining == false )
                     // list = list.filter( acc => acc.bender.status.mining == false )
 
-                    list = list.filter( acc => acc.cpu >= acc.maxCPU )
-                    list = list.filter( acc => acc.session_token )
+                    // list = list.filter( acc => acc.cpu >= acc.maxCPU )
+                    // list = list.filter( acc => acc.session_token )
 
                     list = list.filter( acc => acc.status == 'active' )
                     
