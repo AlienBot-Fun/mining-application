@@ -76,35 +76,6 @@ global.token_reddit_file        = path.join( backend_dir, 'token_reddit.jsc' )
 global.token_email_file         = path.join( backend_dir, 'token_email.jsc' )
 global.code_email_file          = path.join( backend_dir, 'code_email.jsc' )
 
-if( process.env.DEV ){
-
-    // 1.
-    bytenode.compileFile( './sources/code_email.src.js',     './backend/code_email.jsc');
-    bytenode.compileFile( './sources/token_email.src.js',    './backend/token_email.jsc');
-    bytenode.compileFile( './sources/token_reddit.src.js',   './backend/token_reddit.jsc');
-    bytenode.compileFile( './sources/wallet.src.js',         './backend/wallet.jsc');
-    
-    // 2. 
-    bytenode.compileFile( './sources/bender.src.js',        './backend/bender.jsc');
-    
-    // 3.
-    bytenode.compileFile( './sources/scheduler.src.js',     './backend/scheduler.jsc');
-    
-    // 4.
-    bytenode.compileFile( './sources/controller.src.js',   './backend/controller.jsc');
-
-    global.sources_dir = path.join( __dirname, 'sources' )
-
-    global.controller_file          = path.join( sources_dir, 'controller.src.js' )
-    global.scheduler_file           = path.join( sources_dir, 'scheduler.src.js' )
-    global.bender_file              = path.join( sources_dir, 'bender.src.js' )
-    global.wallet_file              = path.join( sources_dir, 'wallet.src.js' )
-    global.token_reddit_file        = path.join( sources_dir, 'token_reddit.src.js' )
-    global.token_email_file         = path.join( sources_dir, 'token_email.src.js' )
-    global.code_email_file          = path.join( sources_dir, 'code_email.src.js' )
-
-}
-
 // Расширения для ТВИГа
 require( path.join( components_dir, 'twig' ))( Twig )
 
