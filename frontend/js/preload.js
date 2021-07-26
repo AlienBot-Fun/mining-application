@@ -196,8 +196,8 @@ $(function(){
 
                     // Сортировка по времени старта
                     list.sort( ( a, b ) => {
-                        if ( a.bender.timeout < b.bender.timeout ) return 1 
-                        if ( a.bender.timeout > b.bender.timeout ) return -1
+                        if ( a.bender.timeout > b.bender.timeout ) return 1 
+                        if ( a.bender.timeout < b.bender.timeout ) return -1
                         return 0
                     })
 					
@@ -222,6 +222,10 @@ $(function(){
 
                 let list = accounts.filter( acc => acc.bender.status.mining == false )
                     // list = list.filter( acc => acc.bender.status.mining == false )
+
+                    list = list.filter( acc => acc.cpu >= acc.maxCPU )
+                    list = list.filter( acc => acc.session_token )
+
                     list = list.filter( acc => acc.status == 'active' )
                     
                     // Сортировка по времени старта
