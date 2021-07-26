@@ -10,7 +10,7 @@
         </td>
         <td> 
             <p class="mb-0 font-weight-normal">
-                {{ lang.mining_status[row.bender.status.currentMessage] }}
+                {{ row.session_token == '' ? 'Нет токена' : lang.mining_status[row.bender.status.currentMessage] }}
             </p>
             <p class="mb-0 small text-left text-primary">
                 {{ row.timeout_text }}
