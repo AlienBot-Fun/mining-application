@@ -1,0 +1,8 @@
+node_modules
+data/accounts.json
+data/groups.json
+data/settings.json
+tmp/Session_*
+reserv
+sources/**.js
+sources/
