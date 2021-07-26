@@ -196,8 +196,8 @@ $(function(){
 
                     // Сортировка по времени старта
                     list.sort( ( a, b ) => {
-                        if ( a.bender.timeout > b.bender.timeout ) return 1 
-                        if ( a.bender.timeout < b.bender.timeout ) return -1
+                        if ( a.bender.timeout < b.bender.timeout ) return 1 
+                        if ( a.bender.timeout > b.bender.timeout ) return -1
                         return 0
                     })
 					
