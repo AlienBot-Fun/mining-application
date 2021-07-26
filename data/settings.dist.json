@@ -1,0 +1,10 @@
+{
+    "cpu_limit": 501,
+    "cpu_time_interval": 5000,
+    "account_interval": 5,
+    "count_opened_window": 1,
+    "token": "",
+    "lang": "russian",
+    "max_runTokens": 1,
+    "totalTimeInteration": 120
+}

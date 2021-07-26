@@ -1,0 +1,1 @@
+npm run start --node-flags --max-old-space-size=512 --no-warnings

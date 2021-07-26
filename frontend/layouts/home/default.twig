@@ -1,0 +1,88 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">   
+
+            <!-- Управление работой ботов -->
+            <div class="row">
+                <div class="col d-flex justify-content-between align-items-center pt-2 pb-2">
+                    <div class="form-group d-flex flex-column justify-content-start align-items-center mb-0 d-block w-100 h-100">
+                        <p class="mb-0 w-100 text-left mt-1 text-primary">{{ lang.pages.home.toWorked }}</p>
+                    </div>
+                    <a class="btn btn-primary btn-block btn-sm mr-2 javascript-playment-run" href="javascript:void(0)" onclick="UI.planner.tools.runAll()" >
+                        <i class="fa fa-play"></i> {{ lang.pages.home.runAll }} <!-- Запустить всё -->
+                    </a>
+                    <a class="btn btn-primary btn-block btn-sm mt-0 mr-2 javascript-playment-stop" href="javascript:void(0)"  disabled onclick="UI.planner.tools.stopedAll()" >
+                        <i class="fa fa-stop"></i> {{ lang.pages.home.stopedAll }} <!-- Остановить всё -->
+                    </a>
+                    <!-- Держать сколько то окон.... -->
+                    <select data-toggle="tooltip" disabled class="border rounded-0 form-control-sm" name="window_interval" data-placement="top" title="{{ lang.pages.home.countWorkedWindow }}" onchange="UI.planner.tools.selectWindowInterval( this )" >
+                        {% for item in 1..5 %}
+                            <option value="{{ item }}">{{ lang.pages.home.activeAs_window|format( item ) }} {{ lang.pages.home.activeAs_wariants|num2word( item ) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Боты в работе / Запускались сегодня -->
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive table-borderless mt-2 mb-2">
+                        <table class="table table-striped table-bordered table-hover table-sm mb-0">
+                            <thead>
+                                <tr>
+                                    <th width="140">{{ lang.pages.home.worked_account }}</th>
+                                    <th>{{ lang.pages.home.worked_event }}</th>
+                                    <th width="130">{{ lang.pages.home.kan_cpu }}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="javascript-list-work" ></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            
+            <!-- Кандидаты Управление -->
+            <div class="row">
+                <div class="col d-flex justify-content-between align-items-center pb-2 pt-1">
+                    <div class="form-group d-flex flex-column justify-content-start align-items-center mb-0 d-block w-100 h-100"><small class="invisible">_</small>
+                        <p class="mb-0 w-100 text-left text-primary">{{ lang.pages.home.active_kandidats }}</p>
+                    </div>
+                    <div class="form-group d-flex flex-column mb-0 d-block w-100 h-100 c-white invisible">
+                        <small>{{ lang.pages.home.active_group }}</small>
+                        <p class="mb-0 w-100 text-left javascript-changeGroupsNames" >...</p>
+                    </div>
+                    <div class="form-group d-flex flex-column mb-0 ml-3  c-white">
+                        <small>{{ lang.pages.home.activeInvTotam }} <span class="javascript-controlInterval small"></span></small>
+                        <select data-toggle="tooltip" disabled class="border rounded-0 form-control-sm" name="account_interval" title="{{ lang.pages.home.activeIntvRunBots }}" onchange="UI.planner.tools.selectAccountInterval( this )" >
+                            {% for item in 5..60 %}
+                                <option value="{{ item }}">{{ lang.pages.home.activeSecAs|format( item ) }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кандидаты список -->
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive table-borderless">
+                        <table class="table table-striped table-bordered table-hover table-sm mb-0">
+                            <thead>
+                                <tr>
+                                    <th width="140">{{ lang.pages.home.kan_account }}</th>
+                                    <th>{{ lang.pages.home.kan_status }}</th>
+                                    <th>{{ lang.pages.home.kan_clime }}</th>
+                                    <th width="130">{{ lang.pages.home.kan_cpu }}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="javascript-list-wait"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="mt-2 mb-2 ml-3 mr-3 d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+        <a class="btn btn-sm btn-primary mr-2" href="javascript:void(0)" onclick="UI.accounts.edit( 0 )" >{{ lang.pages.accounts.dobavit }}</a>
+        <input id="account-search" class="form-control form-control-sm w-100">
+    </div>
+    <div class="d-flex align-items-center">
+        <input type="file" class="d-none" id="import-accounts" />
+        <a class="btn btn-sm btn-secondary mr-2" href="javascript:void(0)" onclick="UI.accounts.export_pattern()" >{{ lang.pages.accounts.exp_pattern }}</a>
+        <a class="btn btn-sm btn-secondary mr-2" href="javascript:void(0)" onclick="UI.accounts.export()" >{{ lang.pages.accounts.exp }}</a>
+        <a class="btn btn-sm btn-secondary mr-2" href="javascript:void(0)" onclick="UI.accounts.import()" >{{ lang.pages.accounts.imp }}</a>
+        <a class="btn btn-sm btn-secondary" external="https://alienbot.fun/manual" role="button" ><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="table-responsive table-borderless">
+    <table class="table table-striped table-bordered table-hover mb-0">
+        <thead>
+            <tr>
+                <th class="pl-3" width="200" >{{ lang.pages.accounts.account }}</th>
+                <th>{{ lang.pages.accounts.mining }}</th>
+                <th>{{ lang.pages.accounts.balance }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="javascript-listingContent-accounts"></tbody>
+    </table>
+</div>

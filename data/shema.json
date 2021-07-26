@@ -1,0 +1,52 @@
+{
+
+    "accounts" : {
+        "wax_login":        { "type": "string", "default": "" },
+        "status":           { "type": "string", "default": "active" },
+        "group_id":         { "type": "integer", "default": 0 },
+        "interval":         { "type": "integer", "default": 0 },
+        "climetime":        { "type": "integer", "default": 0 },
+        "timeout":          { "type": "integer", "default": 0 },
+        "maxCPU":           { "type": "integer", "default": 0 },
+        "cpu":              { "type": "integer", "default": 0 },
+        "cpu_staked":       { "type": "string", "default": "" },
+        "balanceWAX":       { "type": "string", "default": "0.00000000 WAX" },
+        "balanceTLM":       { "type": "string", "default": "0.00000000 TLM" },
+        "last_clime_trx":   { "type": "string", "default": "" },
+        "last_clime_tlm":   { "type": "string", "default": "0.00000000 TLM" },
+        "email":            { "type": "string", "default": "" },
+        "email_password":   { "type": "string", "default": "" },
+        "imap_server":      { "type": "string", "default": "" },
+        "token_mode":       { "type": "string", "default": "mail" },
+        "username":         { "type": "string", "default": "" },
+        "password":         { "type": "string", "default": "" },
+        "session_token":    { "type": "string", "default": "" },
+        "nonce":            { "type": "string", "default": "0" },
+        "proxy":            { "type": "string", "default": "off" },
+        "proxy_host":       { "type": "string", "default": "" },
+        "proxy_port":       { "type": "string", "default": "" },
+        "proxy_username":   { "type": "string", "default": "" },
+        "proxy_password":   { "type": "string", "default": "" },
+        "starting_time":    { "type": "integer", "default": 0 },
+        "note":             { "type": "string", "default": "0" }
+    },
+
+    "groups" : {
+        "id":               { "type": "integer", "unique": "true"  },
+        "header":           { "type": "string", "default": "" },
+        "worktime":         { "type": "string", "default": "00:00-23:59" }
+    },
+
+    "settings" : {
+        "cpu_limit":                { "type": "integer", "default": 540 },
+        "cpu_time_interval":        { "type": "integer", "default": 5000 },
+        "account_interval":         { "type": "integer", "default": 5 },
+        "count_opened_window":      { "type": "integer", "default": 5 },
+        "token":                    { "type": "string", "default": "" },
+        "lang":                     { "type": "string", "default": "russian" },
+        "max_runBrowser":           { "type": "integer", "default": 5 },
+        "max_runTokens":            { "type": "integer", "default": 1 },
+        "totalTimeInteration":      { "type": "integer", "default": 60000 }
+    }
+
+}

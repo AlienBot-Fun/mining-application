@@ -1,0 +1,20 @@
+<div class="mt-2 mb-2 ml-3">
+    <a class="btn btn-sm btn-primary" href="javascript:void(0)" onclick="UI.groups.edit( 0 )">{{ lang.pages.group.add }}</a>
+    <a class="btn btn-sm btn-secondary mr-3 float-right" external="https://alienbot.fun/manual" role="button" ><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+    <a class="btn btn-sm btn-secondary mr-2 float-right" href="javascript:void(0)" onclick="UI.groups.import()" >{{ lang.pages.group.imp }}</a> 
+        <input type="file" class="d-none" id="import-groups" />
+    <a class="btn btn-sm btn-secondary mr-2 float-right" href="javascript:void(0)" onclick="UI.groups.export()" >{{ lang.pages.group.exp }}</a>
+    <a class="btn btn-sm btn-secondary mr-2 float-right" href="javascript:void(0)" onclick="UI.groups.export_pattern()" >{{ lang.pages.group.exp_pattern }}</a>
+</div>
+<div class="table-responsive table-borderless">
+    <table class="table table-striped table-bordered table-hover table-sm mb-0">
+        <thead>
+            <tr>
+                <th class="pl-3">{{ lang.pages.group.number }}</th>
+                <th>{{ lang.pages.group.nazvanie }}</th>
+                <th>{{ lang.pages.group.rangeWorks }}</th>
+            </tr>
+        </thead>
+        <tbody class="javascript-listingContent-groups"></tbody>
+    </table>
+</div>

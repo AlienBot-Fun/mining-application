@@ -1,0 +1,58 @@
+<div>
+    <div class="col-12">
+        <form id="form-settings">
+            <fieldset>
+                <legend>{{ lang.pages.settings.token }}</legend>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-sm" name="token" value="{{ settings.token }}" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>{{ lang.pages.settings.mining_sett }}</legend>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.cpu_control }}</small>
+                    <select name="cpu_time_interval" class="form-control form-control-sm" >
+                        {% for item in 5..20 %}
+                            <option value="{{ item * 1000 }}" {{ settings.cpu_time_interval == ( item * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( item ) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.vidachy_interv }}</small>
+                    <select name="account_interval" class="form-control form-control-sm" >
+                        {% for item in 5..60 %}
+                            <option value="{{ item }}" {{ settings.account_interval == item ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( item ) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.countOpenedWindow }}</small>
+                    <select name="count_opened_window" class="form-control form-control-sm" >
+                        {% for item in 1..5 %}
+                            <option value="{{ item }}" {{ settings.count_opened_window == item ? 'selected' : '' }} >{{ lang.pages.settings.activeAs|format( item ) }} {{ lang.pages.settings.activeAs_wariants|num2word( item ) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.MinValCPU }}</small>
+                    <input type="number" class="form-control form-control-sm" name="cpu_limit" value="{{ settings.cpu_limit }}" />
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>{{ lang.pages.settings.UI }}</legend>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.UILang }}</small>
+                    <select name="lang" class="form-control form-control-sm" >
+                        {% for lang in langs %}
+                            <option value="{{ lang }}" {{ settings.lang == lang ? 'selected' : '' }} >{{ lang|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-success">{{ lang.pages.settings.save }}</button>
+                <small class="javascript-status-settings"></small>
+            </div>
+        </form>
+    </div>
+</div>

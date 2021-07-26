@@ -1,0 +1,40 @@
+{% set accounts_colors = lang.accounts_colors %}
+{% for row in items %}
+    <tr onclick="UI.planner.show_account_modal('{{ row.wax_login }}')" >
+        <td>
+            <p class="mb-0 font-weight-bold">
+                <circle class="bg-{{ row.nonce ? 'primary' : 'success' }}"></circle>
+                <span><span class="text-blur">{{ row.wax_login }}</span></span>
+            </p>
+            <p class="mb-0 small text-success text-left pl-4">{{ groups[ row.group_id ]|default( lang.pages.home.list_wait_not_group ) }}</p>
+        </td>
+        <td> 
+            <p class="mb-0 font-weight-normal">
+                {{ lang.mining_status[row.bender.status.currentMessage] }}
+            </p>
+            <p class="mb-0 small text-left text-primary">
+                {{ row.timeout_text }}
+            </p>
+        </td>
+        <td>
+            <p class="mb-0 font-weight-normal text-primary">
+                <a href="javascript:void(0)" external="https://wax.bloks.io/transaction/{{ row.last_clime_trx|default('#') }}" >
+                    {{ row.last_clime_tlm }}
+                </a>
+            </p>
+            <p class="mb-0 small text-left">
+                {{ row.climetime|date('d.m H:i') }}
+            </p>
+        </td>
+        <td>
+            <p class="mb-0 font-weight-normal">
+                <span class="text-success">{{ row.maxCPU }}</span> 
+                • 
+                <span>{{ row.cpu }}</span>
+            </p>
+            <p class="mb-0 small text-left">
+                {{ row.cpu_staked }}
+            </p>
+        </td>
+    </tr>
+{% endfor %}

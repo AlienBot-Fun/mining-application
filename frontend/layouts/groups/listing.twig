@@ -1,0 +1,25 @@
+{% for group in groups %}
+    <tr>
+        <td class="pl-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <span>{{ group.id }}</span>
+            </div>
+        </td>
+        <td class="align-middle">
+            <p class="mb-0">{{ group.header }}</p>
+        </td>
+        <td class="align-middle">
+            <p class="mb-0">{{ lang.pages.group.listing_worked_is|format( group.worktime ) }}</p>
+        </td>
+        <td>
+            <p class="mb-0 text-right">
+                <a class="btn btn-sm btn-secondary" href="javascript:void(0)" onclick="UI.groups.edit( '{{ group.id }}' )" >
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a> 
+                <a class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="UI.groups.delete( '{{ group.id }}', true )" style="margin-right: 10px;" >
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a> 
+            </p>
+        </td>
+    </tr>
+{% endfor %}
