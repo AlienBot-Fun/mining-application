@@ -119,6 +119,7 @@
 
             <div class="form-group">
                 <input type="hidden" name="climetime" value="{{ item.climetime|default(0) }}" />
+                <input type="hidden" name="starting_time" value="{{ item.starting_time|default(0) }}" />
                 <input type="hidden" name="timeout" value="{{ item.timeout|default(0) }}" />
                 <input type="hidden" name="maxCPU" value="{{ item.id|default(settings.cpu_limit) }}" />
                 <input type="hidden" name="cpu" value="{{ item.id|default(0) }}" />
