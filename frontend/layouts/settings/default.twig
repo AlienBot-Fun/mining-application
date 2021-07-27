@@ -37,6 +37,10 @@
                     <small class="mb-1 d-block">{{ lang.pages.settings.MinValCPU }}</small>
                     <input type="number" class="form-control form-control-sm" name="cpu_limit" value="{{ settings.cpu_limit }}" />
                 </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">Предельное время для майнинга, сек</small>
+                    <input type="number" class="form-control form-control-sm" name="totalTimeInteration" value="{{ settings.totalTimeInteration }}" />
+                </div>
             </fieldset>
             <fieldset>
                 <legend>{{ lang.pages.settings.UI }}</legend>
