@@ -962,6 +962,7 @@ $(function(){
                              | 
                             // Если это редактирование, и логин НЕ изменился
                             ( is_created !== 'created' && is_created === item_data.value )
+                            
                         ) {
 
                             UI.helpers.is_account_insert().then( iai => {
@@ -970,13 +971,18 @@ $(function(){
                                 if( iai ){
 
                                     ipcRenderer.invoke( 'account_edit', { is_created:is_created, data: data } ).then( response => {
+
                                         $('form#form-account .javascript-status').text( response.mess )
+
                                         // Обновление+рендеринг списка
                                         UI.accounts.get_list( true )
+
                                         // Спрятать окошко
                                         $('#pageModal').modal('hide')
+
                                         // Сонхронизация списка аккаунтов
                                         UI.accounts.sync_accountList()
+
                                     })
 
                                 }
