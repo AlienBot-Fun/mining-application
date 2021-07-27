@@ -14,7 +14,7 @@
                 {{ lang.mining_status[row.bender.status.currentMessage] }}
             </p>
             <p class="mb-0 small text-left text-primary">
-                {{ row.timeout_text }} {{ row.bender.status.currentBlockchain ? ' • ' ~ row.bender.status.currentBlockchain : '' }}
+                {{ row.timeout_text }} {{ row.bender.status.currentBlockchain ? ' • ' ~ row.bender.status.currentBlockchain : '' }} - {{ row.bender.status.token_errors }}
             </p>
         </td>
         <td>
