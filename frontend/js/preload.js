@@ -499,14 +499,14 @@ $(function(){
             // Переделка интерфейса под текущию среду доступа
             access_token_rebuild: () => {
 
-                let title = `AlenBot PRO ★ ${UI.lang.pages.home.title}`
+                let title = `AlienBot PRO ★ ${UI.lang.pages.home.title}`
                 let content = `
                     <p class="mb-0 w-100">${UI.lang.registry.no}</p>
                     <button external="https://alienbot.fun/account/nodes/form" class="btn btn-sm btn-success">${UI.lang.registry.no_btn}</button>
                 `
 
                 if( UI.access_data.status === 'on' ){
-                    title = 'AlenBot PRO ★ ' + UI.access_data.header
+                    title = 'AlienBot PRO ★ ' + UI.access_data.header
                     content = `
                         <p class="mb-0 w-100">${UI.lang.registry.ok} ${UI.access_data.count} <span class="ml-2 mr-2">  ★  </span> ${UI.lang.registry.ok2} ${UI.access_data.balance} WAX</p>
                         <button external="https://alienbot.fun/account/nodes/form/${UI.access_data.hash}" class="btn btn-sm btn-success" >${UI.lang.registry.ok_btn}</button>
