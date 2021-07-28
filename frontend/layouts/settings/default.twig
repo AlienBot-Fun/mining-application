@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <small class="mb-1 d-block">{{ lang.pages.settings.countOpenedWindow }}</small>
                     <select name="count_opened_window" class="form-control form-control-sm" >
-                        {% for item in 1..5 %}
+                        {% for item in 1..20 %}
                             <option value="{{ item }}" {{ settings.count_opened_window == item ? 'selected' : '' }} >{{ lang.pages.settings.activeAs|format( item ) }} {{ lang.pages.settings.activeAs_wariants|num2word( item ) }}</option>
                         {% endfor %}
                     </select>
