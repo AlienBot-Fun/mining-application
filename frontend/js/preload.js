@@ -418,8 +418,8 @@ $(function(){
                                     .then( async results => {
                                         
                                         var results = results.filter( element => element !== null && element !== undefined )
-
-                                        UI.helpers.is_account_insert( results.length ).then( iai => {
+                                        var set_lenght = results.length - 1
+                                        UI.helpers.is_account_insert( set_lenght  ).then( iai => {
 
                                             // Если можно добавлять аккаунты....
                                             if( iai ){
