@@ -1,6 +1,7 @@
 const { ipcRenderer } = require('electron');
 const electron = require('electron').remote
 const Excel = electron.require('exceljs')
+const Twig = electron.require('twig')
 const shema = electron.require('./data/shema')
 
 $(function(){
@@ -438,7 +439,7 @@ $(function(){
                                                         console.log('ipcMain -> accounts_mining_logins', accounts_mining_logins);
                                                         UI.accounts.planned_addAccounts( accounts_mining_logins )
                                                     }
-                                                    
+
                                                 })
 
                                                 .catch( () => {

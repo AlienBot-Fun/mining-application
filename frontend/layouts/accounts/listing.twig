@@ -7,11 +7,15 @@
                     <circle class="bg-{{ accounts_colors[account.status].color }}" data-toggle="tooltip" title="{{ accounts_colors[account.status].header }}" ></circle>
                     <span><span class="text-blur">{{ account.wax_login }}</span></span>
                 </p>
-                <p class="mb-0 small text-success text-left pl-4">{{ groups_grid[ account.group_id ]|default( lang.pages.accounts.list_not_group ) }}</p>
+                {% if account.note %}
+                    <p class="mb-0 small text-dark text-left pl-4">{{ account.note }}</p>
+                {% else %}
+                    <p class="mb-0 small text-success text-left pl-4">{{ groups_grid[ account.group_id ]|default( lang.pages.accounts.list_not_group ) }}</p>
+                {% endif %}
             </div>
         </td>
         <td>
-            <p class="mb-0">{{ account.climetime ? account.climetime|date('d.m H:i') : lang.pages.accounts.list_not_info }} <br /></p>
+            <p class="mb-0">{{ account.climetime ? account.climetime|date('d.m H:i') : lang.pages.accounts.list_not_info }} ~{{ climetime( account ) }}</p>
             <small class="ajax-data-climeresult" title="{{ lang.pages.accounts.list_clime_not_result }}">{{ account.last_clime_tlm }}</small>
         </td>
         <td>
@@ -20,6 +24,14 @@
             </p>
             <p class="mb-0 small ajax-balance-tlm" data-account="{{ account.wax_login }}">
                 {{ account.balanceTLM|number_format( 4, '.', ' ' ) }} TLM
+            </p>
+        </td>
+        <td>
+            <p class="mb-0" data-account="{{ account.wax_login }}">
+                {{ account.cpu|default( '0' ) }} CPU
+            </p>
+            <p class="mb-0 small">
+                {{ account.cpu_staked|default( '0.0000 WAX' ) }}
             </p>
         </td>
         <td>

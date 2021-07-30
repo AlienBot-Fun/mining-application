@@ -7,6 +7,16 @@ module.exports = function( Twig )
         return value.replace(/[^+\d]/g,'')
     });
 
+    /** Получение даты отсчёта крайнего клайма */
+    Twig.extendFunction('climetime', function( acc ) {
+        var climetime_text = '00:00'
+        if( acc.climetime !== undefined && acc.climetime > 0 ){
+            let tms_timeout = helpers.timer_convert( acc.climetime )
+            climetime_text = `${tms_timeout.h}:${tms_timeout.m}`
+        }
+        return climetime_text
+    });
+
     /*{{ ['год','года','лет']|num2word(35) }}*/
     Twig.extendFilter( 'num2word', function( array, integer ){
         return helpers.num2word( array, integer )
