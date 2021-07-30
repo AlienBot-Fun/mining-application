@@ -46,6 +46,9 @@
                 <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="tooltip" title="{{ lang.pages.accounts.list_opt_quit }}" onclick="UI.tools.wallet('{{ account.wax_login }}')" >
                     <i class="fa fa-credit-card" aria-hidden="true"></i>
                 </a>
+                <a class="btn btn-sm btn-info" href="javascript:void(0)" onclick="UI.tools.alcor('{{ account.wax_login }}')" data-toggle="tooltip" title="Alcor.exchange" >
+                    <img src="img/alcor.svg" width="15" />
+                </a>
                 <a class="btn btn-sm btn-danger" href="javascript:void(0)" data-toggle="tooltip" title="{{ lang.pages.accounts.list_opt_rem }}" onclick="UI.accounts.delete( '{{ account.wax_login }}', true )" >
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>

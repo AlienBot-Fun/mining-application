@@ -280,6 +280,11 @@ $(function(){
                 }
             },
 
+            // Открыть Страницу с Alcor-Exchange
+            alcor: ( wax_login ) => {
+                ipcRenderer.send( 'alcor_auth', wax_login )
+            },
+
             // Открыть Страницу с кошельком 
             wallet: ( wax_login ) => {
                 ipcRenderer.send( 'wallet_auth', wax_login )
