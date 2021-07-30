@@ -11,8 +11,9 @@ module.exports = function( Twig )
     Twig.extendFunction('climetime', function( acc ) {
         var climetime_text = '00:00'
         if( acc.climetime !== undefined && acc.climetime > 0 ){
-            let tms_timeout = helpers.timer_convert( acc.climetime )
-            climetime_text = `${tms_timeout.h}:${tms_timeout.m}`
+            let counttime = Number( helpers.time() ) - Number( acc.climetime )
+            let tms_timeout = helpers.timer_convert( counttime )
+            climetime_text = `${tms_timeout.h}:${tms_timeout.m}:${tms_timeout.s}`
         }
         return climetime_text
     });
