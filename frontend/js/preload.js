@@ -431,7 +431,14 @@ $(function(){
                                                                 
                                                     // Сонхронизация списка аккаунтов
                                                     UI.accounts.sync_accountList()
-                                                
+                                                    
+                                                    // Обновление планировщика
+                                                    if( results.length > 0 ){
+                                                        let accounts_mining_logins = results.map( acc => acc.wax_login )
+                                                        console.log('ipcMain -> accounts_mining_logins', accounts_mining_logins);
+                                                        UI.accounts.planned_addAccounts( accounts_mining_logins )
+                                                    }
+                                                    
                                                 })
 
                                                 .catch( () => {
@@ -441,7 +448,7 @@ $(function(){
                                                                 
                                                     // Сонхронизация списка аккаунтов
                                                     UI.accounts.sync_accountList()
-                                                    
+
                                                 })
 
                                             }
@@ -983,6 +990,9 @@ $(function(){
                                         // Сонхронизация списка аккаунтов
                                         UI.accounts.sync_accountList()
 
+                                        // Добавление аккаунта в планировщик
+                                        UI.accounts.planned_addAccount( item_data.value )
+
                                     })
 
                                 }
@@ -1055,6 +1065,30 @@ $(function(){
                     $('#server-preload').addClass('d-none')
                     return { status: 'error', message: 'Undefined error' }
                 }        
+
+            },
+
+            // Добавить аккаунт в планироващик
+            planned_addAccount : wax_login => {
+                ipcRenderer.send( 'add_account', wax_login )
+            },
+
+            // Добавить аккаунты в планироващик
+            planned_addAccounts : wax_logins => {
+
+                let addAccpunt = ( wax_login, sleep ) => {
+                    setTimeout(() => {
+                        ipcRenderer.send( 'add_account', wax_login )
+                    }, sleep)
+                }
+
+                let i = 0;
+                do {
+                    var login = wax_logins[i]
+                    var sleep = 1000 * i
+                    addAccpunt( login, sleep )
+                    i++;
+                } while ( i < wax_logins.length )
 
             }
 
