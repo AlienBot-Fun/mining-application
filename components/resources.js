@@ -191,6 +191,32 @@ const resources = {
                     resolve( false )
                 })
             })
+        },
+        get_balance: function( account, XXX ){
+            
+            let _ = this
+
+            let get_account = account.wax_login
+            let get_symbol = XXX
+            let get_code = 'eosio.token'
+
+            if( XXX === 'TLM' ){
+                get_code = 'alien.worlds'
+            }
+
+            // let rpc = new JsonRpc( 'https://wax.greymass.com', { fetch });
+            let rpc = new JsonRpc( _.get_random(), { fetch });
+            return new Promise(( resolve, reject ) => { 
+                rpc.get_currency_balance( get_code, get_account, get_symbol ).then( e => {
+                    if( e !== undefined && e.length > 0 ){
+                        let item = e.pop()
+                        resolve( item )
+                    }
+                }).catch(() => {
+                    resolve( false )
+                })
+            })
+
         }
     }
 }
