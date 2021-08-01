@@ -681,6 +681,8 @@ $(function(){
             // Можно ли еще добавить НН ое колво аккаунтов....
             is_account_insert: async function( setCount = false ){
 
+                console.log('setCount', setCount);
+
                 // Если есть рабочий доступ ...
                 if( UI.access_data.status !== undefined && UI.access_data.status === 'on' ){
                     
@@ -1002,9 +1004,9 @@ $(function(){
                         }
 
                         if( mode === 'EDIT' ) {
-                            if( item_data.value === '' | isset_list === false ){
+                            if( item_data.value === '' && isset_list === false ){
                                 error_display()
-                            }else if( item_data.value !== is_created | isset_list === true ){
+                            }else if( item_data.value !== is_created && isset_list === true ){
                                 error_display()
                             }else{
                                 send_change()
