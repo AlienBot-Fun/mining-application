@@ -424,8 +424,8 @@ $(function(){
                                     .then( async results => {
                                         
                                         var results = results.filter( element => element !== null && element !== undefined )
-                                        var set_lenght = results.length - 1
-                                        UI.helpers.is_account_insert( set_lenght  ).then( iai => {
+										
+                                        UI.helpers.is_account_insert( results.length ).then( iai => {
 
                                             // Если можно добавлять аккаунты....
                                             if( iai ){
@@ -686,7 +686,7 @@ $(function(){
                     
                     if( setCount !== false ){
                         // ( +setCount ) Переданное колво аккаунтов < Допустимого ( При импорте )
-                        return ( setCount < UI.access_data.count ) ? true : false;
+                        return ( Number( setCount ) <= Number( UI.access_data.count ) ) ? true : false;
                     }
                     
                     else{
@@ -963,62 +963,68 @@ $(function(){
                         let data = $(this).serializeArray()
 
                         let item_data = data.find( item => item.name == 'wax_login' )
-                        let isset_list = ( ids.indexOf( item_data.value ) === -1 ) // true - если нет повторения по списку
+                        let isset_list = ( ids.indexOf( item_data.value ) > -1 ) ? true : false
 
-                        if ( 
-
-                            // Если это добавление, и логин уникален для списка
-                            ( is_created === 'created' && item_data.value !== '' && isset_list )
-                             | 
-                            // Если это редактирование, и логин изменился ( Но все-же он уникален для списка )
-                            ( is_created !== 'created' && is_created !== item_data.value && isset_list )
-                             | 
-                            // Если это редактирование, и логин НЕ изменился
-                            ( is_created !== 'created' && is_created === item_data.value )
-                            
-                        ) {
-
-                            UI.helpers.is_account_insert().then( iai => {
-                                
-                                // Если можно добавлять аккаунты....
-                                if( iai ){
-
-                                    ipcRenderer.invoke( 'account_edit', { is_created:is_created, data: data } ).then( response => {
-
-                                        $('form#form-account .javascript-status').text( response.mess )
-
-                                        // Обновление+рендеринг списка
-                                        UI.accounts.get_list( true )
-
-                                        // Спрятать окошко
-                                        $('#pageModal').modal('hide')
-
-                                        // Сонхронизация списка аккаунтов
-                                        UI.accounts.sync_accountList()
-
-                                        // Добавление аккаунта в планировщик
-                                        UI.accounts.planned_addAccount( item_data.value )
-
-                                    })
-
-                                }
-
-                                // Упёрлись в лимит
-                                else{
-                                    UI.helpers.alert('error', UI.lang.registry.limited )
-                                }
-
-                            })
-
-                        }
-                        
-                        else{
+                        // Показать ошибку
+                        let error_display = () => {
                             $('body .modal-content').animate({ scrollTop: $('input[name="wax_login"]').offset().top }, {
                                 duration: 370,
                                 easing: "linear"
                             })
                             $('input[name="wax_login"]').css('outline', '1px solid red')
                             setTimeout(() => { $('input[name="wax_login"]').css('outline', 'none') }, 3000);
+                        }
+
+                        // Отправить изменения
+                        let send_change = () => {
+                            ipcRenderer.invoke( 'account_edit', { is_created:is_created, data: data } ).then( response => {
+
+                                $('form#form-account .javascript-status').text( response.mess )
+
+                                // Обновление+рендеринг списка
+                                UI.accounts.get_list( true )
+
+                                // Спрятать окошко
+                                $('#pageModal').modal('hide')
+
+                                // Сонхронизация списка аккаунтов
+                                UI.accounts.sync_accountList()
+
+                                // Добавление аккаунта в планировщик
+                                UI.accounts.planned_addAccount( item_data.value )
+
+                            })
+                        }
+
+                        let mode = 'EDIT'
+                        if ( is_created === 'created' ) {
+                            mode = 'CREATE'
+                        }
+
+                        if( mode === 'EDIT' ) {
+                            if( item_data.value === '' | isset_list === false ){
+                                error_display()
+                            }else if( item_data.value !== is_created | isset_list === true ){
+                                error_display()
+                            }else{
+                                send_change()
+                            }
+                        }
+
+                        if( mode === 'CREATE' ){
+                            
+                            if( item_data.value === '' | isset_list === true ){
+                                error_display()
+                            }else{
+                                UI.helpers.is_account_insert().then( iai => {
+                                    
+                                    // Если можно добавлять аккаунты....
+                                    if( iai ){
+                                        send_change()
+                                    }
+                                })
+                            }
+
                         }
 
                         return false
