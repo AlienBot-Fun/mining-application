@@ -2,8 +2,8 @@ const Imap = require('node-imap')
 const simpleParser = require('mailparser').simpleParser
 const cheerio = require('cheerio')
 
-login       = 'alienbot.fun@yandex.ru'
-password    = 'pft,fkb,fybnm'
+login       = ''
+password    = ''
 host        = 'imap.yandex.ru'
 
 // Подготовка параметров для подключения к серверу
