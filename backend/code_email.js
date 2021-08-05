@@ -2,7 +2,7 @@ const Imap = require('node-imap')
 const simpleParser = require('mailparser').simpleParser
 const cheerio = require('cheerio')
 
-module.exports = ( login, password, host, port = false, tls = 'on' ) => {
+module.exports = ( login = '', password = '', host = '', port = false, tls = 'on' ) => {
     
     var set_port = ( port !== false ) ? port : settings.imap_port
     var set_tls = ( tls !== 'on' ) ? 'off' : settings.tls
