@@ -6,4 +6,6 @@ tmp/Session_*
 reserv
 sources/**.js
 sources/
-backend/
+logs/**.log
+app.client.js
+app.js
