@@ -17,6 +17,16 @@
             </p>
         </td>
         <td>
+            <p class="mb-0 font-weight-normal text-primary">
+                <a href="javascript:void(0)" external="https://wax.bloks.io/transaction/{{ row.last_clime_trx|default('#') }}" >
+                    {{ row.last_clime_tlm }}
+                </a>
+            </p>
+            <p class="mb-0 small text-left">
+                {{ row.climetime|date('d.m H:i') }}
+            </p>
+        </td>
+        <td>
             <p class="mb-0 font-weight-normal">
                 <span class="text-success">{{ row.maxCPU }}</span> 
                 • 
