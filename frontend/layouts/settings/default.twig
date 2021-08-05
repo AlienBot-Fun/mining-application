@@ -49,6 +49,34 @@
                     <small class="mb-1 d-block">IMAP-Port по умолчанию</small>
                     <input type="number" class="form-control form-control-sm" name="imap_port" value="{{ settings.imap_port }}" />
                 </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">Reddit Visible</small>
+                    <select name="reddit_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.reddit_visible == 'on' ? ' selected ' : '' }}    >ON</option>
+                        <option value="off" {{ settings.reddit_visible == 'off' ? ' selected ' : '' }}   >OFF</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">Mail Visible</small>
+                    <select name="mail_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.mail_visible == 'on' ? ' selected ' : '' }}    >ON</option>
+                        <option value="off" {{ settings.mail_visible == 'off' ? ' selected ' : '' }}   >OFF</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">Reddit Bender Visible</small>
+                    <select name="reddit_bender_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.reddit_bender_visible == 'on' ? ' selected ' : '' }}    >ON</option>
+                        <option value="off" {{ settings.reddit_bender_visible == 'off' ? ' selected ' : '' }}   >OFF</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">Mail Bender Visible</small>
+                    <select name="mail_bender_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.mail_bender_visible == 'on' ? ' selected ' : '' }}    >ON</option>
+                        <option value="off" {{ settings.mail_bender_visible == 'off' ? ' selected ' : '' }}   >OFF</option>
+                    </select>
+                </div>
             </fieldset>
             <fieldset>
                 <legend>{{ lang.pages.settings.UI }}</legend>
