@@ -133,7 +133,6 @@
 
             <div class="form-group">
                 <input type="hidden" name="climetime" value="{{ item.climetime|default(0) }}" />
-                <input type="hidden" name="starting_time" value="{{ item.starting_time|default(0) }}" />
                 <input type="hidden" name="timeout" value="{{ item.timeout|default(0) }}" />
                 <input type="hidden" name="maxCPU" value="{{ item.id|default(settings.cpu_limit) }}" />
                 <input type="hidden" name="cpu" value="{{ item.id|default(0) }}" />
@@ -142,7 +141,7 @@
                 <input type="hidden" name="nonce" value="{{ item.nonce|default('') }}" />
                 <input type="hidden" name="balanceTLM" value="{{ item.balanceTLM|default('0.00000000 WAX') }}" />
                 <input type="hidden" name="balanceWAX" value="{{ item.balanceWAX|default('0.00000000 WAX') }}" />
-                <input type="hidden" name="last_clime_tlm" value="{{ item.last_clime_tlm|default('0.00000000 WAX') }}" />
+                <input type="hidden" name="last_clime_tlm" value="{{ item.last_clime_tlm|default('0.00000000 TLM') }}" />
                 <input type="hidden" name="last_clime_trx" value="{{ item.last_clime_trx|default('') }}" />
                 <button type="submit" class="btn btn-sm btn-success">{{ lang.pages.accounts.save }}</button>
                 <small class="javascript-status"></small>

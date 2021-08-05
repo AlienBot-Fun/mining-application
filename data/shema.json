@@ -29,7 +29,6 @@
         "proxy_port":       { "type": "string", "default": "" },
         "proxy_username":   { "type": "string", "default": "" },
         "proxy_password":   { "type": "string", "default": "" },
-        "starting_time":    { "type": "integer", "default": 0 },
         "note":             { "type": "string", "default": "0" }
     },
 
