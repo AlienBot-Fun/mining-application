@@ -5,24 +5,21 @@ const cheerio = require('cheerio')
 module.exports = ( login = '', password = '', host = '', port = false, tls = 'on' ) => {
     
     var set_port = ( port !== false ) ? port : settings.imap_port
-    var set_tls = ( tls !== 'on' ) ? 'off' : settings.tls
 
     return new Promise(( resolve, reject ) => {
         
-        // Подготовка параметров для подключения к серверу
-        var imap = new Imap({
+        var connected = {
             user: login,
             password: password,
             host: host,
             port: set_port,
-            tls: ( ( set_tls ) ? true : false )
-        });
+            tls: ( tls == 'on' ) ? true : false
+        }
+        var imap = new Imap( connected );
         
         // Сбор списка кодов от ВАКСа
         var mail_codes = []
-        
-        // Объект готов сотрудничать
-        imap.once('ready', function() {
+        var chech_code = ( trycount = 0 ) => {
             
             logger.log( 'mail connect' )
 
@@ -40,8 +37,15 @@ module.exports = ( login = '', password = '', host = '', port = false, tls = 'on
                     
                     // Если писем нет - закрыть соединение
                     if( results.length == 0 ){
-                        logger.log( 'mail end' )
-                        imap.end()
+                        if( trycount < Number( settings.mail_timeout ) ){
+                            trycount++
+                            setTimeout(() => {
+                                chech_code( trycount )
+                            }, 2000)
+                        }else{
+                            logger.log( 'mail end' )
+                            imap.end()
+                        }
                     }
                     
                     // Если письма есть - начать их разбор
@@ -94,11 +98,15 @@ module.exports = ( login = '', password = '', host = '', port = false, tls = 'on
                     }
                 })
             })
-        })
+        }
+
+
+        // Объект готов сотрудничать
+        imap.once( 'ready', chech_code )
         
         // Ошибка при подключении или еще в чём то...
         imap.once('error', err => {
-            logger.log( 'imap.once error')
+            logger.log( 'imap.once error', err )
             reject( false )
         })
         
@@ -115,7 +123,7 @@ module.exports = ( login = '', password = '', host = '', port = false, tls = 'on
         // Cоединение закрыто
         imap.once('close', err => {
             if( err ) throw err
-            global.logger.log( 'imap.once close')
+            logger.log( 'imap.once close')
 
             setTimeout( () => {
                 if( mail_codes.length == 0 ){
