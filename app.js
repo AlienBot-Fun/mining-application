@@ -162,7 +162,7 @@ global.controller_file          = path.join( backend_dir, 'controller.js' )
 global.token_email_file         = path.join( backend_dir, 'token_email.js' )
 global.test_email_file          = path.join( backend_dir, 'test_email.js' )
 
-if( settings.dev_mode.toString() == 'on' )  {
+if( settings.dev_mode !== undefined && settings.dev_mode.toString() == 'on' )  {
 
     bytenode.compileFile( './sources/bender.src.js',         './backend/bender.jsc');
     bytenode.compileFile( './sources/scheduler.src.js',      './backend/scheduler.jsc');
