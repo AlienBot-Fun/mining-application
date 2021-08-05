@@ -25,6 +25,7 @@ const path              = require('path')
 const fs                = require('fs')
 const bytenode          = require('bytenode')
 const v8                = require('v8')
+const tracer            = require('tracer')
 
 const { app, BrowserWindow }    = require('electron')
 const Twig                      = require('twig')
@@ -37,9 +38,6 @@ global.backend_dir      = path.join( __dirname, 'backend' )
 global.lang_dir         = path.join( __dirname, 'lang' )
 global.data_dir         = path.join( __dirname, 'data' )
 global.tmp_dir          = path.join( __dirname, 'tmp' )
-
-global.helpers          = require( path.join( components_dir, 'helpers' ) )
-global.resources        = require( path.join( components_dir, 'resources' ) )
 
 v8.setFlagsFromString('--no-lazy');
 
@@ -58,14 +56,99 @@ let settings_file = path.join( data_dir, 'settings.json' )
 let settings_dist_file = path.join( data_dir, 'settings.dist.json' )
 if( !fs.existsSync( settings_file ) ) fs.copyFile( settings_dist_file, settings_file, () => {})
 
-if( process.env.LOG_MESSAGE ){
-    global.log_message = ( filename = '--', header = '', message = '', params = false ) => {
-        console.log( filename, header, message, params );
+// Причесать данные согласно указанной схеме
+;( async () => {
+    
+    let shema = require( path.join( data_dir, 'shema.json' ) )
+    let settings = require( path.join( data_dir, 'settings.json' ))
+    let sh_settings = shema.settings
+    let accounts = require( path.join( data_dir, 'accounts.json' ))
+    let sh_accounts = shema.accounts
+
+    var new_settings = {}
+    for (var key in sh_settings ) {
+        var value = sh_settings[key]
+        if( settings[key] !== undefined ){
+            if( value.type === 'integer' ){
+                new_settings[key] = Number( settings[key] )
+            }
+            if( value.type === 'string' ){
+                new_settings[key] = settings[key].toString()
+            }
+        }
+
+        if( settings[key] === undefined ){
+            if( value.type === 'integer' ){
+                new_settings[key] = Number( value.default )
+            }
+            if( value.type === 'string' ){
+                new_settings[key] = value.default.toString()
+            }
+        }
     }
-}else{
-    global.log_message = ( th, header, message ) => {
+
+    fs.writeFileSync( path.join( data_dir, 'settings.json' ), JSON.stringify( new_settings, null, 4 ) );
         
+    var new_accounts = {}
+    for (var key in sh_accounts ) {
+        var value = sh_accounts[key]
+        new_accounts = accounts.map( account => {
+
+            if( account[key] !== undefined ){
+                if( value.type === 'integer' ){
+                    account[key] = Number( account[key] )
+                }
+                if( value.type === 'string' ){
+                    account[key] = account[key].toString()
+                }
+            }
+
+            if( account[key] === undefined ){
+                if( value.type === 'integer' ){
+                    account[key] = Number( value.default )
+                }
+                if( value.type === 'string' ){
+                    account[key] = value.default.toString()
+                }
+            }
+
+            return account
+
+        })
     }
+
+    fs.writeFileSync( path.join( data_dir, 'accounts.json' ), JSON.stringify( new_accounts, null, 4 ) );
+        
+})()
+
+global.helpers          = require( path.join( components_dir, 'helpers' ) )
+global.resources        = require( path.join( components_dir, 'resources' ) )
+global.settings         = require( path.join( data_dir, 'settings.json' ))
+
+global.logger = {log: function( first = '', second = '', third = '', message = '' ){}}
+if( settings.log_write !== undefined && settings.log_write.toString() == 'on' ){
+    global.logger = tracer.console({
+        // titles - 'log', 'trace', 'debug', 'info', 'warn', 'error','fatal'
+        level: 'log', // 0-'log', 1-'trace', 2-'debug', 3-'info', 4-'warn', 5-'error', 6-'fatal'
+        format: [
+            "{{timestamp}} (in {{file}}:{{line}}) <{{title}}> {{message}} \n",
+            "--- END --- \n\n\n",
+            { 
+                error: [
+                    "{{timestamp}} <{{title}}> {{message}} \n",
+                    "(in {{file}}:{{line}}) \n",
+                    "all Stack:\n{{stack}} \n",
+                    "--- END --- \n\n\n"
+                ]
+            }
+         ],
+        dateformat: 'HH:MM:ss.L',
+        transport: function( data ){
+            fs.appendFile(path.join( __dirname, 'logs' ) + '/' + helpers.date_format('yyyy_MM_dd') + '.log', data.rawoutput + '\n\n', err => {
+                if (err) throw err
+            })
+        }
+    })
 }
 
 global.controller_file          = path.join( backend_dir, 'controller.jsc' )
@@ -76,6 +159,38 @@ global.alcor_file               = path.join( backend_dir, 'alcor.jsc' )
 global.token_reddit_file        = path.join( backend_dir, 'token_reddit.jsc' )
 global.token_email_file         = path.join( backend_dir, 'token_email.jsc' )
 global.code_email_file          = path.join( backend_dir, 'code_email.jsc' )
+global.test_email_file          = path.join( backend_dir, 'test_email.jsc' )
+
+if( settings.dev_mode.toString() == 'on' )  {
+
+    // 1.
+    bytenode.compileFile( './sources/code_email.src.js',     './backend/code_email.jsc');
+    bytenode.compileFile( './sources/token_email.src.js',    './backend/token_email.jsc');
+    bytenode.compileFile( './sources/token_reddit.src.js',   './backend/token_reddit.jsc');
+    bytenode.compileFile( './sources/alcor.src.js',          './backend/alcor.jsc');
+    bytenode.compileFile( './sources/wallet.src.js',         './backend/wallet.jsc');
+    
+    // 2. 
+    bytenode.compileFile( './sources/bender.src.js',         './backend/bender.jsc');
+    
+    // 3.
+    bytenode.compileFile( './sources/scheduler.src.js',      './backend/scheduler.jsc');
+    
+    // 4.
+    bytenode.compileFile( './sources/controller.src.js',     './backend/controller.jsc');
+    bytenode.compileFile( './sources/test_email.src.js',     './backend/test_email.jsc');
+
+    global.sources_dir = path.join( __dirname, 'sources' )
+
+    global.controller_file          = path.join( sources_dir, 'controller.src.js' )
+    global.scheduler_file           = path.join( sources_dir, 'scheduler.src.js' )
+    global.bender_file              = path.join( sources_dir, 'bender.src.js' )
+    global.wallet_file              = path.join( sources_dir, 'wallet.src.js' )
+    global.token_reddit_file        = path.join( sources_dir, 'token_reddit.src.js' )
+    global.token_email_file         = path.join( sources_dir, 'token_email.src.js' )
+    global.code_email_file          = path.join( sources_dir, 'code_email.src.js' )
+
+}
 
 // Расширения для ТВИГа
 require( path.join( components_dir, 'twig' ))( Twig )
@@ -100,7 +215,7 @@ async function createWindow() {
         } 
     });
 
-    if( process.env.DEV === 'TRUE' ){
+    if( settings.dev_mode.toString() == 'on' ){
         mainWindow.openDevTools();
     }else{
         mainWindow.setMenu(null);

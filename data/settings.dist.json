@@ -1,4 +1,5 @@
 {
+    "dev_mode": "off",
     "cpu_limit": 501,
     "cpu_time_interval": 5000,
     "account_interval": 5,
@@ -6,5 +7,16 @@
     "token": "",
     "lang": "russian",
     "max_runTokens": 1,
-    "totalTimeInteration": 120
+    "imap_port": 994,
+    "mail_timeout": 90000,
+    "mail_trycount": 20000000000000,
+    "reddit_trycount": 20000000000000,
+    "mining_visible": "off",
+    "reddit_visible": "on",
+    "mail_visible": "on",
+    "log_write": "on",
+    "reddit_bender_visible": "off",
+    "mail_bender_visible": "off",
+    "wallet_aw_tools": "on",
+    "totalTimeInteration": 20
 }

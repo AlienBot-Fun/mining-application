@@ -1104,6 +1104,40 @@ $(function(){
                     i++;
                 } while ( i < wax_logins.length )
 
+            },
+
+            // Проверить работоспособность аккаунта
+            mathed: elm => {
+
+                if( $(elm).attr( 'disabled' ) === undefined ){
+                        
+                    $(elm).attr( 'disabled', true )
+                    let data = $('form#form-account').serializeArray()
+                    
+                    let email = data.find( item => item.name === 'email' )
+                    let password = data.find( item => item.name === 'email_password' )
+                    let server = data.find( item => item.name === 'imap_server' )
+                    let port = data.find( item => item.name === 'imap_port' )
+                    let tls = data.find( item => item.name === 'tls' )
+
+                    if( email.value !== '' && password.value !== '' && server.value !== '' && port.value !== '' && tls.value !== '' ){
+                        ipcRenderer.invoke( 'account_email_mathed', { 
+                            email: email.value,
+                            password: password.value,
+                            server: server.value,
+                            port: port.value,
+                            tls: tls.value
+                        }).then( response => {
+                            $(elm).removeAttr('disabled')
+                            UI.helpers.alert( response.status, response.message )
+                        })
+                    }else{
+                        $(elm).removeAttr('disabled')
+                        UI.helpers.alert('error', UI.lang.pages.accounts.js_test_mail_error_input )
+                    }
+
+                }
+
             }
 
         }

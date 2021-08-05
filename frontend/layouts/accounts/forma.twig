@@ -40,6 +40,20 @@
                     <small class="mb-1 d-block">{{ lang.pages.accounts.form_mail_imap }}</small>
                     <input type="text" class="form-control form-control-sm" name="imap_server" value="{{ item.imap_server }}" />
                 </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.accounts.form_mail_port }}</small>
+                    <input type="text" class="form-control form-control-sm" name="imap_port" value="{{ item.imap_port|default( UI.settings.imap_port ) }}" />
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.accounts.form_mail_tls }}</small>
+                    <select name="tls" class="form-control form-control-sm" >
+                        <option value="on"  {{ item.tls == 'on' ? ' selected ' : '' }}    >ON</option>
+                        <option value="off" {{ item.tls == 'off' ? ' selected ' : '' }}   >OFF</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" onclick="UI.accounts.mathed( this )" >Проверить</a>
+                </div>
             </fieldset>
 
             <fieldset class="mb-4">

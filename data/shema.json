@@ -17,6 +17,8 @@
         "email":            { "type": "string", "default": "" },
         "email_password":   { "type": "string", "default": "" },
         "imap_server":      { "type": "string", "default": "" },
+        "imap_port":        { "type": "integer", "default": 993 },
+        "tls":              { "type": "string", "default": "on" },
         "token_mode":       { "type": "string", "default": "mail" },
         "username":         { "type": "string", "default": "" },
         "password":         { "type": "string", "default": "" },
@@ -38,14 +40,25 @@
     },
 
     "settings" : {
+        "dev_mode":                 { "type": "string", "default": "off" },
         "cpu_limit":                { "type": "integer", "default": 540 },
         "cpu_time_interval":        { "type": "integer", "default": 5000 },
         "account_interval":         { "type": "integer", "default": 5 },
         "count_opened_window":      { "type": "integer", "default": 5 },
         "token":                    { "type": "string", "default": "" },
         "lang":                     { "type": "string", "default": "russian" },
-        "max_runBrowser":           { "type": "integer", "default": 5 },
         "max_runTokens":            { "type": "integer", "default": 1 },
+        "imap_port":                { "type": "integer", "default": 993 },
+        "mail_timeout":             { "type": "integer", "default": 90000 },
+        "mail_trycount":            { "type": "integer", "default": 20000000000000 },
+        "reddit_trycount":          { "type": "integer", "default": 20000000000000 },
+        "mining_visible":           { "type": "string", "default": "off" },
+        "reddit_visible":           { "type": "string", "default": "on" },
+        "mail_visible":             { "type": "string", "default": "on" },
+        "log_write":                { "type": "string", "default": "off" },
+        "reddit_bender_visible":    { "type": "string", "default": "off" },
+        "mail_bender_visible":      { "type": "string", "default": "off" },
+        "wallet_aw_tools":          { "type": "string", "default": "off" },
         "totalTimeInteration":      { "type": "integer", "default": 60000 }
     }
 

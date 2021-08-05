@@ -9,6 +9,7 @@
   "dependencies": {
     "bytenode": "^1.3.3",
     "cheerio": "^1.0.0-rc.10",
+    "date-format": "^3.0.0",
     "dotenv": "^10.0.0",
     "electron": "^9.0.0",
     "electron-twig": "^1.1.1",
@@ -22,6 +23,7 @@
     "nodemon": "^2.0.12",
     "puppeteer": "^5.5.0",
     "puppeteer-extra": "^3.1.18",
+    "tracer": "^1.1.5",
     "twig": "^1.15.4"
   },
   "description": "play.alienworlds.io alienworlds alien-worlds alien worlds alien bot AlienBot",

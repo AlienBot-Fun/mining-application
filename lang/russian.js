@@ -188,6 +188,7 @@ var lang = {};
         activeSecAs : 'Каждые %s сек'
     }
 
+    
     lang.pages.accounts = {
 
         created : 'Создание аккаунта',
@@ -215,6 +216,8 @@ var lang = {};
         form_mail_email : 'Email',
         form_mail_pass : 'Пароль',
         form_mail_imap : 'IMAP-Сервер',
+        form_mail_port : 'IMAP-Порт',
+        form_mail_tls :  'IMAP-tls',
 
         form_title_reddit : 'Авторизационные данные Reddit',
         form_title_wax : 'Авторизационные данные WAX',
@@ -252,7 +255,9 @@ var lang = {};
         // list_opt_change_header: 'Изменение информации аккаунта',
         list_opt_update: 'Обновить токен',
         list_opt_quit: 'Войти в WAX-Wallet',
-        list_opt_rem: 'Удалить'
+        list_opt_rem: 'Удалить',
+
+        js_test_mail_error_input: 'Не достаточно данных для проверки'
 
     }
 
