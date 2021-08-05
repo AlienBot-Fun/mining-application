@@ -126,7 +126,7 @@ global.resources        = require( path.join( components_dir, 'resources' ) )
 global.settings         = require( path.join( data_dir, 'settings.json' ))
 
 global.logger = {log: function( first = '', second = '', third = '', message = '' ){}}
-if( settings.log_write !== undefined && settings.log_write.toString() == 'on' ){
+if( settings.log_write !== undefined && settings.log_write == 'on' ){
     global.logger = tracer.console({
         // titles - 'log', 'trace', 'debug', 'info', 'warn', 'error','fatal'
         level: 'log', // 0-'log', 1-'trace', 2-'debug', 3-'info', 4-'warn', 5-'error', 6-'fatal'
