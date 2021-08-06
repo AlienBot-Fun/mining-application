@@ -168,13 +168,16 @@ var lang = {};
         js_isImportant: 'Импорт УДАЛИТ ВСЕ группы, и загрузит новые из указанного вами файла. Точно хотите продолжить?'
 
     }
-
+    
     lang.pages.settings = {
         server_legend : 'Cервер',
         server : 'Адрес сервера',
         token : 'Токен',
         mining_sett : 'Настройка майнинга ( По умолчанию )',
-        cpu_control : 'Контроль CPU',
+        cpu_control : 'Интервал проверки CPU',
+        wax_control : 'Интервал проверки WAX Баланса',
+        tlm_control : 'Интервал проверки TLM Баланса',
+        clm_control : 'Интервал проверки крайнего клайма',
         vidachy_interv : 'Интервал выдачи',
         countOpenedWindow : 'Кол-во открытых окон',
         MinValCPU : 'Мин. значение CPU',
@@ -185,7 +188,30 @@ var lang = {};
 
         activeAs : 'Держать %s ',
         activeAs_wariants: ['окно', 'окна', 'окон'],
-        activeSecAs : 'Каждые %s сек'
+        activeSecAs : 'Каждые %s сек',
+
+        block_mail: 'Работа с почтой',
+        imap_port_default: 'IMAP-Port по умолчанию',
+        mail_timeout: 'Пытаться искать код на почте',
+
+        mining_predel: 'Предельное время для майнинга, сек',
+        block_session: 'Процесс получения токена сессии',
+        count_potoks: 'Кол-во потоков',
+        count_potoks_variants: ['поток', 'потока', 'потоков'],
+        mail_timeout_var: '%s сек.',
+        label_mail_visible: 'Показывать для Email ( Режим кнопки )',
+        label_reddit_visible: 'Показывать для Reddit ( Режим кнопки )',
+        label_mail_bender_visible: 'Показывать для Email ( Режим майнинга )',
+        label_reddit_bender_visible: 'Показывать для Reddit ( Режим майнинга )',
+
+        block_reznoe: 'Другое',
+        label_wallet_aw_tools: 'Показывать вкладку AW Tools при открытии кошелька',
+        label_logs: 'Логи',
+        label_logs_1: 'Отображать',
+        label_logs_2: 'Записывать',
+
+        select_ok: 'Да', 
+        select_no: 'Нет', 
     }
 
     

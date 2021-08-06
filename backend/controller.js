@@ -1,4 +1,4 @@
-
+'use strict';
 const { dialog, shell, ipcMain }        = require('electron')
 const fs                        = require('fs')
 const path                      = require('path')
@@ -85,6 +85,7 @@ const Controller = new Object({
 
     // Авторизация в кабинете wallet_wax
     session_token: async ( event, data, trycount = 0 ) => {
+        
         let _ = this
         let account = await resources.accounts.select( data )
         

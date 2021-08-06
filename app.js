@@ -1,3 +1,4 @@
+'use strict';
 
 process.on('unhandledRejection', () => {});
 process.on('rejectionHandled', () => {});
@@ -56,7 +57,7 @@ let settings_file = path.join( data_dir, 'settings.json' )
 let settings_dist_file = path.join( data_dir, 'settings.dist.json' )
 if( !fs.existsSync( settings_file ) ) fs.copyFile( settings_dist_file, settings_file, () => {})
 
-// Причесать данные согласно указанной схеме
+// Пересборка данных согласно указанной схеме
 ;( async () => {
     
     let shema = require( path.join( data_dir, 'shema.json' ) )
@@ -86,37 +87,26 @@ if( !fs.existsSync( settings_file ) ) fs.copyFile( settings_dist_file, settings_
             }
         }
     }
-
     fs.writeFileSync( path.join( data_dir, 'settings.json' ), JSON.stringify( new_settings, null, 4 ) );
-        
-    var new_accounts = {}
-    for (var key in sh_accounts ) {
-        var value = sh_accounts[key]
-        new_accounts = accounts.map( account => {
-
+    
+    
+    var new_accounts = []
+    accounts.map( account => {
+        var plus = {}
+        for (var key in sh_accounts ) {
+            var value = sh_accounts[key]
+            plus[key] = value.default
             if( account[key] !== undefined ){
                 if( value.type === 'integer' ){
-                    account[key] = Number( account[key] )
+                    plus[key] = Number( account[key] )
                 }
                 if( value.type === 'string' ){
-                    account[key] = account[key].toString()
+                    plus[key] = account[key].toString()
                 }
             }
-
-            if( account[key] === undefined ){
-                if( value.type === 'integer' ){
-                    account[key] = Number( value.default )
-                }
-                if( value.type === 'string' ){
-                    account[key] = value.default.toString()
-                }
-            }
-
-            return account
-
-        })
-    }
-
+        }
+        new_accounts.push( plus )
+    })
     fs.writeFileSync( path.join( data_dir, 'accounts.json' ), JSON.stringify( new_accounts, null, 4 ) );
         
 })()
@@ -125,7 +115,12 @@ global.helpers          = require( path.join( components_dir, 'helpers' ) )
 global.resources        = require( path.join( components_dir, 'resources' ) )
 global.settings         = require( path.join( data_dir, 'settings.json' ))
 
-global.logger = {log: function( first = '', second = '', third = '', message = '' ){}}
+global.logger = {
+    log: function( first = '', second = '', third = '', message = '' ){
+        console.log( first, second, third, message );
+    }
+}
+
 if( settings.log_write !== undefined && settings.log_write == 'on' ){
     global.logger = tracer.console({
         // titles - 'log', 'trace', 'debug', 'info', 'warn', 'error','fatal'
@@ -172,6 +167,16 @@ if( settings.dev_mode !== undefined && settings.dev_mode.toString() == 'on' )  {
     global.scheduler_file           = path.join( sources_dir, 'scheduler.src.js' )
     global.bender_file              = path.join( sources_dir, 'bender.src.js' )
 
+    // Соорудить заготовку под настройки
+    var shema                   = require( path.join( data_dir, 'shema.json' ) )
+    var shema_settings          = shema.settings
+    var dist_settings = {}
+    for (var key in shema_settings ) {
+        var value = shema_settings[key]
+        dist_settings[key] = value.default
+    }
+    fs.writeFileSync( path.join( data_dir, 'settings.dist.json' ), JSON.stringify( dist_settings, null, 4 ) );
+
 }
 
 // Расширения для ТВИГа
@@ -186,10 +191,8 @@ async function createWindow() {
     let lang        = await resources.languages.get()
 
     mainWindow = new BrowserWindow({ 
-        width: 730,
-        height: 750,
-        minWidth: 730,
-        minHeight: 750,
+        minWidth: 830,
+        minHeight: 740,
         icon: path.join( base_dir, 'icon.ico' ),
         webPreferences: { 
             nodeIntegration: true,
