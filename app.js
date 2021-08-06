@@ -19,9 +19,6 @@ setTimeout(() => { prm.catch((err) => { console.log( err.message ) }) }, 0);
 //     process.exit(0)
 // })
 
-// environment variable application
-require('dotenv').config()
-
 const path              = require('path')
 const fs                = require('fs')
 const bytenode          = require('bytenode')
