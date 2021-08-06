@@ -47,7 +47,7 @@
         "clm_time_interval":        { "type": "integer", "default": 15000,          "desc": "Как часто проверять Clime-результат у аккаунтов" },
         "account_interval":         { "type": "integer", "default": 5,              "desc": "Время в сек между выдачей аккаунтов в работу" },
         "count_opened_window":      { "type": "integer", "default": 5,              "desc": "Максимально аккаунтов в работе" },
-        "token":                    { "type": "string", "default": "",              "desc": "Токен владельца" },
+        "token":                    { "type": "string", "default": " ",              "desc": "Токен владельца" },
         "lang":                     { "type": "string", "default": "russian",       "desc": "Язык интерфейса" },
         "max_runTokens":            { "type": "integer", "default": 1,              "desc": "Максимально потоков под получение токена при майнинге" },
         "imap_port":                { "type": "integer", "default": 993,            "desc": "Порт IMAP" },
