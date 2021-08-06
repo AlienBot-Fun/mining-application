@@ -111,9 +111,7 @@ module.exports = ( login = '', password = '', host = '', port = false, tls = 'on
         })
         
         // Попытка неспеша приконнектиться
-        setTimeout( () => {
-            imap.connect()
-        }, settings.mail_timeout )
+        imap.connect()
     
         // Cоединение завершается
         imap.once('end', () => {
