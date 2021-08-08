@@ -1,8 +1,9 @@
 {
-  "name": "alienworlds-mining-application",
-  "version": "2.0.5",
+  "name": "alienworlds-mining-application3",
+  "productName": "AlienBot Pro",
+  "version": "2.1.0",
   "private": true,
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
@@ -14,6 +15,7 @@
     "electron-twig": "^1.1.1",
     "eosjs": "^22.1.0",
     "exceljs": "^4.2.1",
+    "express": "^4.17.1",
     "fast-csv": "^4.3.6",
     "jquery": "^3.6.0",
     "mailparser": "^3.2.0",
