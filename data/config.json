@@ -1,9 +1,0 @@
-{
-    "dev_mode": "on",
-    "min_width": 830,
-    "min_height": 740,
-    "log_write": "on",
-    "dev_tools": "off",
-    "icon_path": "assets/icon.ico",
-    "license_path": "assets/license.txt"
-}

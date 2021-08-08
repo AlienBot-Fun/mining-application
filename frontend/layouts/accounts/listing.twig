@@ -1,0 +1,58 @@
+{% set accounts_colors = lang.accounts_colors %}
+{% for account in accounts %}
+    <tr data-waxlogin="{{ account.wax_login }}" >
+        <td>
+            <div class="float-left">
+                <p class="mb-0 font-weight-bold">
+                    <circle class="bg-{{ accounts_colors[account.status].color }}" data-toggle="tooltip" title="{{ accounts_colors[account.status].header }}" ></circle>
+                    <span><span class="text-blur">{{ account.wax_login }}</span></span>
+                </p>
+                {% if account.note %}
+                    <p class="mb-0 small text-dark text-left pl-4">{{ account.note }}</p>
+                {% else %}
+                    <p class="mb-0 small text-success text-left pl-4">{{ groups_grid[ account.group_id ]|default( lang.pages.accounts.list_not_group ) }}</p>
+                {% endif %}
+            </div>
+        </td>
+        <td>
+            <p class="mb-0">{{ account.climetime ? account.climetime|date('d.m H:i') : lang.pages.accounts.list_not_info }} ~{{ climetime( account ) }}</p>
+            <small class="ajax-data-climeresult" title="{{ lang.pages.accounts.list_clime_not_result }}">{{ account.last_clime_tlm }}</small>
+        </td>
+        <td>
+            <p class="mb-0 ajax-balance-wax" data-account="{{ account.wax_login }}">
+                {{ account.balanceWAX|number_format( 4, '.', ' ' ) }} WAX
+            </p>
+            <p class="mb-0 small ajax-balance-tlm" data-account="{{ account.wax_login }}">
+                {{ account.balanceTLM|number_format( 4, '.', ' ' ) }} TLM
+            </p>
+        </td>
+        <td>
+            <p class="mb-0" data-account="{{ account.wax_login }}">
+                {{ account.cpu|default( '0' ) }} CPU
+            </p>
+            <p class="mb-0 small">
+                {{ account.cpu_staked|default( '0.0000 WAX' ) }}
+            </p>
+        </td>
+        <td>
+            <p class="mb-0 text-right mr-1">
+                <a class="btn btn-sm btn-secondary" href="javascript:void(0)" data-toggle="tooltip" title="{{ lang.pages.accounts.list_opt_change }}" onclick="UI.accounts.edit('{{ account.wax_login }}')" >
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </a> 
+                <a class="btn btn-sm btn-primary" href="javascript:void(0)" data-toggle="tooltip" title="{{ lang.pages.accounts.list_opt_update }}" onclick="UI.tools.session_token('{{ account.wax_login }}')" >
+                    {% if account.session_token %}{% else %}<circle class="bg-danger"></circle>{% endif %}
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="tooltip" title="{{ lang.pages.accounts.list_opt_quit }}" onclick="UI.tools.wallet('{{ account.wax_login }}')" >
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-sm btn-info" href="javascript:void(0)" onclick="UI.tools.alcor('{{ account.wax_login }}')" data-toggle="tooltip" title="Alcor.exchange" >
+                    <img src="img/alcor.svg" width="15" />
+                </a>
+                <a class="btn btn-sm btn-danger" href="javascript:void(0)" data-toggle="tooltip" title="{{ lang.pages.accounts.list_opt_rem }}" onclick="UI.accounts.delete( '{{ account.wax_login }}', true )" >
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </p>
+        </td>
+    </tr>
+{% endfor %}

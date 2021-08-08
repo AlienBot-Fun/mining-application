@@ -1,0 +1,170 @@
+<div>
+    <div class="col-12">
+        <form id="form-settings">
+
+            <fieldset>
+                <legend class="text-primary">{{ lang.pages.settings.token }}</legend>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-sm" name="token" value="{{ settings.token }}" />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend class="text-primary">{{ lang.pages.settings.UI }}</legend>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.UILang }}</small>
+                    <select name="lang" class="form-control form-control-sm" >
+                        {% for lang in langs %}
+                            <option value="{{ lang }}" {{ settings.lang == lang ? 'selected' : '' }} >{{ lang|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend class="text-primary">{{ lang.pages.settings.mining_sett }}</legend>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.cpu_control }}</small>
+                    <select name="cpu_time_interval" class="form-control form-control-sm" >
+                        {% for item in 5..20 %}
+                            <option value="{{ item * 1000 }}" {{ settings.cpu_time_interval == ( item * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( item ) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.wax_control }}</small>
+                    <select name="wax_time_interval" class="form-control form-control-sm" >
+                        <option value="{{ 30 * 1000 }}" {{ settings.wax_time_interval == ( 30 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 30 ) }}</option>
+                        <option value="{{ 60 * 1000 }}" {{ settings.wax_time_interval == ( 60 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 60 ) }}</option>
+                        <option value="{{ 90 * 1000 }}" {{ settings.wax_time_interval == ( 90 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 90 ) }}</option>
+                        <option value="{{ 120 * 1000 }}" {{ settings.wax_time_interval == ( 120 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 120 ) }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.tlm_control }}</small>
+                    <select name="tlm_time_interval" class="form-control form-control-sm" >
+                        <option value="{{ 30 * 1000 }}" {{ settings.tlm_time_interval == ( 30 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 30 ) }}</option>
+                        <option value="{{ 60 * 1000 }}" {{ settings.tlm_time_interval == ( 60 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 60 ) }}</option>
+                        <option value="{{ 90 * 1000 }}" {{ settings.tlm_time_interval == ( 90 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 90 ) }}</option>
+                        <option value="{{ 120 * 1000 }}" {{ settings.tlm_time_interval == ( 120 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 120 ) }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.clm_control }}</small>
+                    <select name="clm_time_interval" class="form-control form-control-sm" >
+                        <option value="{{ 30 * 1000 }}" {{ settings.clm_time_interval == ( 30 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 30 ) }}</option>
+                        <option value="{{ 60 * 1000 }}" {{ settings.clm_time_interval == ( 60 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 60 ) }}</option>
+                        <option value="{{ 90 * 1000 }}" {{ settings.clm_time_interval == ( 90 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 90 ) }}</option>
+                        <option value="{{ 120 * 1000 }}" {{ settings.clm_time_interval == ( 120 * 1000 ) ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( 120 ) }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.vidachy_interv }}</small>
+                    <select name="account_interval" class="form-control form-control-sm" >
+                        {% for item in 5..60 %}
+                            <option value="{{ item }}" {{ settings.account_interval == item ? 'selected' : '' }} >{{ lang.pages.settings.activeSecAs|format( item ) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.countOpenedWindow }}</small>
+                    <select name="count_opened_window" class="form-control form-control-sm" >
+                        {% for item in 1..20 %}
+                            <option value="{{ item }}" {{ settings.count_opened_window == item ? 'selected' : '' }} >{{ lang.pages.settings.activeAs|format( item ) }} {{ lang.pages.settings.activeAs_wariants|num2word( item ) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.MinValCPU }}</small>
+                    <input type="number" class="form-control form-control-sm" name="cpu_limit" value="{{ settings.cpu_limit }}" />
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.mining_predel }}</small>
+                    <input type="number" class="form-control form-control-sm" name="totalTimeInteration" value="{{ settings.totalTimeInteration }}" />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend class="text-primary">{{ lang.pages.settings.block_mail }}</legend>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.imap_port_default }}</small>
+                    <input type="number" class="form-control form-control-sm" name="imap_port" value="{{ settings.imap_port }}" />
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.mail_timeout }}</small>
+                    <select name="mail_timeout" class="form-control form-control-sm" >
+                        <option value="30"  {{ settings.mail_timeout == '30' ? ' selected ' : '' }}     >{{ lang.pages.settings.mail_timeout_var|format( '30' ) }}</option>
+                        <option value="60"  {{ settings.mail_timeout == '60' ? ' selected ' : '' }}     >{{ lang.pages.settings.mail_timeout_var|format( '60' ) }}</option>
+                        <option value="90"  {{ settings.mail_timeout == '90' ? ' selected ' : '' }}     >{{ lang.pages.settings.mail_timeout_var|format( '90' ) }}</option>
+                        <option value="120"  {{ settings.mail_timeout == '120' ? ' selected ' : '' }}   >{{ lang.pages.settings.mail_timeout_var|format( '120' ) }}</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend class="text-primary">{{ lang.pages.settings.block_session }}</legend>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.count_potoks }}</small>
+                    <select name="max_runTokens" class="form-control form-control-sm" >
+                        <option value="1"  {{ settings.max_runTokens == '1' ? ' selected ' : '' }}     >1 {{ lang.pages.settings.count_potoks_variants|num2word( 1 ) }}</option>
+                        <option value="2"  {{ settings.max_runTokens == '2' ? ' selected ' : '' }}     >2 {{ lang.pages.settings.count_potoks_variants|num2word( 2 ) }}</option>
+                        <option value="3"  {{ settings.max_runTokens == '3' ? ' selected ' : '' }}     >3 {{ lang.pages.settings.count_potoks_variants|num2word( 3 ) }}</option>
+                        <option value="4"  {{ settings.max_runTokens == '4' ? ' selected ' : '' }}     >4 {{ lang.pages.settings.count_potoks_variants|num2word( 4 ) }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.label_reddit_visible }}</small>
+                    <select name="reddit_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.reddit_visible == 'on' ? ' selected ' : '' }} >{{ lang.pages.settings.select_ok }}</option>
+                        <option value="off" {{ settings.reddit_visible == 'off' ? ' selected ' : '' }} >{{ lang.pages.settings.select_no }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.label_mail_visible }}</small>
+                    <select name="mail_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.mail_visible == 'on' ? ' selected ' : '' }}    >{{ lang.pages.settings.select_ok }}</option>
+                        <option value="off" {{ settings.mail_visible == 'off' ? ' selected ' : '' }}   >{{ lang.pages.settings.select_no }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.label_reddit_bender_visible }}</small>
+                    <select name="reddit_bender_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.reddit_bender_visible == 'on' ? ' selected ' : '' }}    >{{ lang.pages.settings.select_ok }}</option>
+                        <option value="off" {{ settings.reddit_bender_visible == 'off' ? ' selected ' : '' }}   >{{ lang.pages.settings.select_no }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.label_mail_bender_visible }}</small>
+                    <select name="mail_bender_visible" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.mail_bender_visible == 'on' ? ' selected ' : '' }}    >{{ lang.pages.settings.select_ok }}</option>
+                        <option value="off" {{ settings.mail_bender_visible == 'off' ? ' selected ' : '' }}   >{{ lang.pages.settings.select_no }}</option>
+                    </select>
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend class="text-primary">{{ lang.pages.settings.block_reznoe }}</legend>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.label_wallet_aw_tools }}</small>
+                    <select name="wallet_aw_tools" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.wallet_aw_tools == 'on' ? ' selected ' : '' }}    >{{ lang.pages.settings.select_ok }}</option>
+                        <option value="off" {{ settings.wallet_aw_tools == 'off' ? ' selected ' : '' }}   >{{ lang.pages.settings.select_no }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <small class="mb-1 d-block">{{ lang.pages.settings.label_logs }}</small>
+                    <select name="log_write" class="form-control form-control-sm" >
+                        <option value="on"  {{ settings.log_write == 'on' ? ' selected ' : '' }}    >{{ lang.pages.settings.label_logs_1 }}</option>
+                        <option value="off" {{ settings.log_write == 'off' ? ' selected ' : '' }}   >{{ lang.pages.settings.label_logs_2 }}</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-success">{{ lang.pages.settings.save }}</button>
+                <small class="javascript-status-settings"></small>
+            </div>
+
+        </form>
+    </div>
+</div>
