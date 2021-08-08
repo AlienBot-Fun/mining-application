@@ -14,6 +14,7 @@
         "balanceTLM":       { "type": "string", "default": "0.00000000 TLM",        "desc": "Баланс TLM" },
         "last_clime_trx":   { "type": "string", "default": "",                      "desc": "Крайняя транзакция" },
         "last_clime_tlm":   { "type": "string", "default": "0.00000000 TLM",        "desc": "Результат клайма - TLM" },
+        "rest_timeout":     { "type": "integer", "default": 30,                     "desc": "Время которое отведено под отдых для аккаунта в случае неуспешного клайма" },
         "email":            { "type": "string", "default": "",                      "desc": "Емайл" },
         "email_password":   { "type": "string", "default": "",                      "desc": "Пароль" },
         "imap_server":      { "type": "string", "default": "",                      "desc": "IMAP сервер" },
@@ -39,14 +40,13 @@
     },
 
     "settings" : {
-        "dev_mode":                 { "type": "string", "default": "off",           "desc": "Режим разработчика( Без нужных файлов и папок не включать )" },
         "cpu_limit":                { "type": "integer", "default": 540,            "desc": "Мин CPU для майнинга/клайма (умолчание)" },
         "cpu_time_interval":        { "type": "integer", "default": 5000,           "desc": "Как часто проверять ЦПУ у готовых к клайму аккаунтов" },
         "tlm_time_interval":        { "type": "integer", "default": 30000,          "desc": "Как часто проверять TLM-Баланс у аккаунтов" },
         "wax_time_interval":        { "type": "integer", "default": 15000,          "desc": "Как часто проверять WAX-Баланс у аккаунтов" },
         "clm_time_interval":        { "type": "integer", "default": 15000,          "desc": "Как часто проверять Clime-результат у аккаунтов" },
-        "account_interval":         { "type": "integer", "default": 5,              "desc": "Время в сек между выдачей аккаунтов в работу" },
-        "count_opened_window":      { "type": "integer", "default": 5,              "desc": "Максимально аккаунтов в работе" },
+        "account_interval":         { "type": "integer", "default": 10,              "desc": "Время в сек между выдачей аккаунтов в работу" },
+        "count_opened_window":      { "type": "integer", "default": 3,              "desc": "Максимально аккаунтов в работе" },
         "token":                    { "type": "string", "default": " ",              "desc": "Токен владельца" },
         "lang":                     { "type": "string", "default": "russian",       "desc": "Язык интерфейса" },
         "max_runTokens":            { "type": "integer", "default": 1,              "desc": "Максимально потоков под получение токена при майнинге" },
@@ -57,11 +57,10 @@
         "mining_visible":           { "type": "string", "default": "off",           "desc": "Видеть окно при майнинге" },
         "reddit_visible":           { "type": "string", "default": "on",            "desc": "Видеть окно при получении токена сессии реддит" },
         "mail_visible":             { "type": "string", "default": "on",            "desc": "Видеть окно при получении токена сессии майл" },
-        "log_write":                { "type": "string", "default": "off",           "desc": "on=Писать логи/off=Отображать логи" },
         "reddit_bender_visible":    { "type": "string", "default": "off",           "desc": "Видеть окно при получении токена сессии реддит- майнинг" },
         "mail_bender_visible":      { "type": "string", "default": "off",           "desc": "Видеть окно при получении токена сессии майл- майнинг" },
         "wallet_aw_tools":          { "type": "string", "default": "off",           "desc": "Показать вкладку создания аккаунта АВ при открытии страницы кошелька" },
-        "totalTimeInteration":      { "type": "integer", "default": 60000,          "desc": "Общее кол-во времени отведённое для клайма" }
+        "totalTimeInteration":      { "type": "integer", "default": 150,            "desc": "Общее кол-во времени отведённое для клайма" }
     }
 
 }

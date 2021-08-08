@@ -1,0 +1,10 @@
+{
+    "dev_mode": "off",
+    "port": 3001,
+    "min_width": 890,
+    "min_height": 740,
+    "log_write": "on",
+    "dev_tools": "off",
+    "icon_path": "assets/icon.ico",
+    "license_path": "assets/license.txt"
+}

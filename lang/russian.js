@@ -41,8 +41,10 @@ var lang = {};
         AUTH_WAX_CLOUD : 'Переход на страницу вакс-кошелька',
         TOKEN_REMOVE : 'Токен сессии был удалён',
         PREPARATION_MINING : 'Запуск майнига',
+        TOKEN_MINING : 'Майниг отменён, нет токена',
         TLMOK : 'Успешное получение триллиума',
         ERROR : 'Майнинг завершился ошибкой',
+        SOON : 'Клаймить рано, время клайма изменилось',
         MINING_PROCESS : 'Вычисление ХЭШа транзакции',
         WAITIG_CPU : 'Ожидания готовности по CPU',
         WAX_AUTH_POPUP : 'Прохождение Авторизации через WAX-Popup',
@@ -206,9 +208,7 @@ var lang = {};
 
         block_reznoe: 'Другое',
         label_wallet_aw_tools: 'Показывать вкладку AW Tools при открытии кошелька',
-        label_logs: 'Логи',
-        label_logs_1: 'Отображать',
-        label_logs_2: 'Записывать',
+        label_mining_visible: 'Показывать окно с процессом майнинга',
 
         select_ok: 'Да', 
         select_no: 'Нет', 
@@ -257,6 +257,7 @@ var lang = {};
         form_wax_aw_resets : 'Время перезарядки, сек',
 
         system_settings_mincpu : 'Мин. значение CPU для клайма',
+        system_settings_rest_timeout : 'Сек. отдыхать в случае неуспешного клайма',
         system_settings : 'Системные настройки',
 
         system_settings_group : 'Группа',
