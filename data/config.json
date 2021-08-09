@@ -1,10 +1,12 @@
 {
     "dev_mode": "off",
-    "port": 3000,
     "min_width": 890,
     "min_height": 740,
     "log_write": "on",
     "dev_tools": "off",
     "icon_path": "assets/icon.ico",
-    "license_path": "assets/license.txt"
+    "license_path": "assets/license.txt",
+    "signing_page": "http://localhost",
+    "signing_port": 3000,
+    "signing_math": "localhost"
 }
