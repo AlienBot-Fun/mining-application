@@ -24,7 +24,6 @@
         "username":         { "type": "string", "default": "",                      "desc": "Пользователь (Реддит/Вакс)" },
         "password":         { "type": "string", "default": "",                      "desc": "Пароль (Реддит/Вакс)" },
         "session_token":    { "type": "string", "default": "",                      "desc": "Текущий Сессия-токен" },
-        "nonce":            { "type": "string", "default": "0",                     "desc": "Строчка для подписи крайняя" },
         "proxy":            { "type": "string", "default": "off",                   "desc": "Прокси статус" },
         "proxy_host":       { "type": "string", "default": "",                      "desc": "Прокси сервер" },
         "proxy_port":       { "type": "string", "default": "",                      "desc": "Прокси порт" },
@@ -41,6 +40,7 @@
 
     "settings" : {
         "cpu_limit":                { "type": "integer", "default": 540,            "desc": "Мин CPU для майнинга/клайма (умолчание)" },
+        "trx_time_interval":        { "type": "integer", "default": 10000,          "desc": "Как часто TRX аккаунта" },
         "cpu_time_interval":        { "type": "integer", "default": 5000,           "desc": "Как часто проверять ЦПУ у готовых к клайму аккаунтов" },
         "tlm_time_interval":        { "type": "integer", "default": 30000,          "desc": "Как часто проверять TLM-Баланс у аккаунтов" },
         "wax_time_interval":        { "type": "integer", "default": 15000,          "desc": "Как часто проверять WAX-Баланс у аккаунтов" },

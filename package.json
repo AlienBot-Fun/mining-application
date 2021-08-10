@@ -17,6 +17,7 @@
     "exceljs": "^4.2.1",
     "express": "^4.17.1",
     "fast-csv": "^4.3.6",
+    "gpu.js": "^2.11.3",
     "jquery": "^3.6.0",
     "mailparser": "^3.2.0",
     "node-fetch": "^2.6.1",
@@ -24,6 +25,8 @@
     "nodemon": "^2.0.12",
     "puppeteer": "^5.5.0",
     "puppeteer-extra": "^3.1.18",
+    "sha.js": "^2.4.11",
+    "subtle-digest": "^1.1.1",
     "tracer": "^1.1.5",
     "twig": "^1.15.4"
   },
