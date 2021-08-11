@@ -51,7 +51,9 @@
                     </div>
                     <div class="form-group d-flex flex-column mb-0 d-block w-100 h-100 c-white invisible">
                         <small>{{ lang.pages.home.active_group }}</small>
-                        <p class="mb-0 w-100 text-left javascript-changeGroupsNames" >...</p>
+                        <p class="mb-0 w-100 text-left javascript-changeGroupsNames" >
+
+                        </p>
                     </div>
                     <div class="form-group d-flex flex-column mb-0 ml-3  c-white">
                         <small>{{ lang.pages.home.activeInvTotam }} <span class="javascript-controlInterval small"></span></small>
@@ -74,7 +76,12 @@
                                     <th width="140">{{ lang.pages.home.kan_account }}</th>
                                     <th>{{ lang.pages.home.kan_status }}</th>
                                     <th>{{ lang.pages.home.kan_clime }}</th>
-                                    <th width="130">{{ lang.pages.home.kan_cpu }}</th>
+                                    <th width="130">
+                                        {{ lang.pages.home.kan_cpu }}
+                                        <span class="float-right">
+                                            <input type="checkbox" onchange="UI.tools.check_cpu( this )" > CPU=0
+                                        </span>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="javascript-list-wait"></tbody>
