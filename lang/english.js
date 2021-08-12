@@ -125,7 +125,7 @@ var lang = {};
 
         kan_account : 'Account',
         kan_status : 'Status',
-        kan_clime : 'Extreme Clime',
+        kan_clime : 'Last claim',
         kan_cpu : 'CPU',
 
         list_wait_not_group : 'No group',
