@@ -49,7 +49,7 @@
         "account_interval":         { "type": "integer", "default": 10,              "desc": "Время в сек между выдачей аккаунтов в работу" },
         "count_opened_window":      { "type": "integer", "default": 3,              "desc": "Максимально аккаунтов в работе" },
         "token":                    { "type": "string", "default": " ",              "desc": "Токен владельца" },
-        "lang":                     { "type": "string", "default": "russian",       "desc": "Язык интерфейса" },
+        "lang":                     { "type": "string", "default": "english",       "desc": "Язык интерфейса" },
         "max_runTokens":            { "type": "integer", "default": 1,              "desc": "Максимально потоков под получение токена при майнинге" },
         "imap_port":                { "type": "integer", "default": 993,            "desc": "Порт IMAP" },
         "mail_timeout":             { "type": "integer", "default": 90000,          "desc": "Время за которое нужно получить код на почте" },
