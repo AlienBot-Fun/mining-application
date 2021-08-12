@@ -8,6 +8,7 @@
         "climetime":        { "type": "integer", "default": 0,                      "desc": "Крайний клайм / Timestamp(MSK)" },
         "timeout":          { "type": "integer", "default": 0,                      "desc": "Таймер до даты.. / Timestamp(MSK)" },
         "maxCPU":           { "type": "integer", "default": 0,                      "desc": "Мин CPU для клайма" },
+        "difficulty":       { "type": "integer", "default": 1,                      "desc": "Параметр Difficulty" },
         "cpu":              { "type": "integer", "default": 0,                      "desc": "Текущие показатели CPU" },
         "cpu_staked":       { "type": "string", "default": "",                      "desc": "CPU Застейкано" },
         "balanceWAX":       { "type": "string", "default": "0.00000000 WAX",        "desc": "Баланс WAX" },
