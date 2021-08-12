@@ -139,6 +139,7 @@ var lang = {};
 
         js_aborted_hand: 'Прерванно принудительным способом',
         js_account_activity: 'Активность аккаунта',
+        no_token: 'Нет токена',
 
         activity_header: 'Активность аккаунта'
 
@@ -288,6 +289,13 @@ var lang = {};
 
         js_test_mail_error_input: 'Не достаточно данных для проверки'
 
+    }
+    
+    lang.pages.info = {
+        header: 'Информация',
+        tg_kanal: 'Телеграмм канал:',
+        techsupport: 'Тех.поддержка:',
+        site: 'Сайт:'
     }
 
     lang.logs = {
