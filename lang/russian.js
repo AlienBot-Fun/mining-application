@@ -18,7 +18,7 @@ var lang = {};
     }
 
     lang.nav = {
-        mining : 'Манинг',
+        mining : 'Майнинг',
         accounts : 'Аккаунты',
         groups : 'Группы',
         settings : 'Настройки',
