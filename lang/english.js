@@ -42,7 +42,7 @@ var lang = {};
         TOKEN_REMOVE : 'The session token has been deleted',
         PREPARATION_MINING : 'Mining has been started',
         TOKEN_MINING : 'Mining has been cancelled, no token',
-        TLMOK : 'Successfully obtained trillium',
+        OK : 'Successfully obtained trillium',
         ERROR : 'Restarting mining',
         SOON : 'Claim early, clime time has changed',
         LONG_SIGN_PROCESS : 'Took a long time to sign...',
