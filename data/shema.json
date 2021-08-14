@@ -13,7 +13,7 @@
         "cpu_staked":       { "type": "string", "default": "",                      "desc": "CPU Застейкано" },
         "balanceWAX":       { "type": "string", "default": "0.00000000 WAX",        "desc": "Баланс WAX" },
         "balanceTLM":       { "type": "string", "default": "0.00000000 TLM",        "desc": "Баланс TLM" },
-        "last_clime_trx":   { "type": "string", "default": "",                      "desc": "Крайняя транзакция" },
+        "last_clime_trx":   { "type": "string", "default": "0000000000000000000000000000000000000000000000000000000000000000",                      "desc": "Крайняя транзакция" },
         "last_clime_tlm":   { "type": "string", "default": "0.00000000 TLM",        "desc": "Результат клайма - TLM" },
         "rest_timeout":     { "type": "integer", "default": 30,                     "desc": "Время которое отведено под отдых для аккаунта в случае неуспешного клайма" },
         "email":            { "type": "string", "default": "",                      "desc": "Емайл" },
