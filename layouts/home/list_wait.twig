@@ -19,7 +19,7 @@
         <td>
             <p class="mb-0 font-weight-normal text-primary">
                 <a href="javascript:void(0)" external="https://wax.bloks.io/transaction/{{ row.last_clime_trx|default('#') }}" >
-                    {{ row.last_clime_tlm }}
+                    {{ row.bender.status.lastTLM|default('_.___ TLM') }}
                 </a>
             </p>
             <p class="mb-0 small text-left">
